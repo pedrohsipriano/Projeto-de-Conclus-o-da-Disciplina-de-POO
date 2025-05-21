@@ -102,4 +102,8 @@ O sistema simula o funcionamento de uma biblioteca universitária e deverá perm
 
 > Pedro Henrique Sipriano Cavalcante  
 > Ciência da Computação - UDF  
-> [GitHub](https://github.com/seuusuario) | [LinkedIn](https://www.linkedin.com/in/pedro-henrique-sipriano-cavalcante-9a12732a9)
+> [GitHub](https://github.com/pedrohsipriano) | [LinkedIn](https://www.linkedin.com/in/pedro-henrique-sipriano-cavalcante-9a12732a9)
+---
+> Filipe Pedais Carvalho   
+> Ciência da Computação - UDF  
+> [GitHub](https://github.com/FilipePedais) | [LinkedIn](https://wwww.linkedin.com/in/filipe-pedais-6706ab176)
