@@ -1,4 +1,5 @@
 package Classes;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,8 +28,7 @@ public class UsuarioLivro {
                         "  \"livro\": %s\n" +
                         "}",
                 usuario.toString().replaceAll("(?m)^", "  "),
-                livro.toString().replaceAll("(?m)^", "  ") 
-        );
+                livro.toString().replaceAll("(?m)^", "  "));
     }
 
     public static void emprestarLivro(List<Usuario> listaUsuarios, List<Livro> listaLivros,
@@ -100,9 +100,48 @@ public class UsuarioLivro {
         System.out.println("Livro emprestado com sucesso!");
         System.out.println("==================================\n");
 
-        for (UsuarioLivro usuarioLivro : listaUsuarioLivro) {
-            System.out.println(usuarioLivro);
-        }
+        for (int i = 0; i < listaUsuarioLivro.size(); i++) {
+                UsuarioLivro ul = listaUsuarioLivro.get(i);
+                System.out.println(i + " - " + ul.getUsuario().getNome() + " | " + ul.getLivro().getTitulo());
+            }
         System.out.println("==================================");
     }
+
+    public static void devolverLivro(List<Usuario> listaUsuarios, List<Livro> listaLivros,
+            List<UsuarioLivro> listaUsuarioLivro) {
+        System.out.print("\033[H\033[J");
+        Scanner scanner = new Scanner(System.in);
+
+        if (listaUsuarioLivro.isEmpty()) {
+            System.out.println("Não há livros emprestados para devolver.");
+            return;
+        }
+
+        int idxEmprestimo = -1;
+        while (true) {
+            System.out.println("==================================");
+            System.out.println("Livros emprestados:");
+            for (int i = 0; i < listaUsuarioLivro.size(); i++) {
+                UsuarioLivro ul = listaUsuarioLivro.get(i);
+                System.out.println(i + " - " + ul.getUsuario().getNome() + " | " + ul.getLivro().getTitulo());
+            }
+
+            System.out.print("Escolha o número do empréstimo a ser devolvido: ");
+            idxEmprestimo = scanner.nextInt();
+
+            if (idxEmprestimo >= 0 && idxEmprestimo < listaUsuarioLivro.size()) {
+                break;
+            } else {
+                System.out.println("Número inválido. Tente novamente.");
+            }
+        }
+
+        UsuarioLivro devolucao = listaUsuarioLivro.remove(idxEmprestimo);
+        devolucao.getLivro().setEmprestimo(true);
+
+        System.out.println("==================================");
+        System.out.println("Livro devolvido com sucesso!");
+        System.out.println("==================================\n");
+    }
+
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>console</headerType>
+  <jar>C:\Users\pedro.henrique\OneDrive\Área de Trabalho\Programação\Programas\POO\Projeto-de-Conclus-o-da-Disciplina-de-POO\Sistema de Gestão de Biblioteca Acadêmica\Sistema de Gestão de Biblioteca Acadêmica.jar</jar>
+  <outfile>C:\Users\pedro.henrique\OneDrive\Área de Trabalho\Programação\Programas\POO\Projeto-de-Conclus-o-da-Disciplina-de-POO\Sistema de Gestão de Biblioteca Acadêmica\teste1.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon></icon>
+  <jre>
+    <path>C:\Program Files\Java\jdk-24\bin</path>
+    <requiresJdk>true</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+    <opt>--enable-preview</opt>
+  </jre>
+</launch4jConfig>

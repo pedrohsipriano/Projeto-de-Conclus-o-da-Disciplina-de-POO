@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Usuario {
     private String nome;
-    private String matricula;
+    private long matricula;
     private boolean tipo;
     private String email;
-    private String cpf;
+    private long cpf;
 
     public String getNome() {
         return nome;
@@ -17,11 +17,11 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getMatricula() {
+    public long getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(long matricula) {
         this.matricula = matricula;
     }
 
@@ -41,11 +41,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 
@@ -68,19 +68,39 @@ public class Usuario {
 
         String opcao = "s";
         while (!opcao.equalsIgnoreCase("n")) {
+
             Usuario usuario = new Usuario();
             System.out.println("==================================");
             System.out.print("Nome: ");
             usuario.setNome(scanner.nextLine());
 
+            try{
             System.out.print("CPF: ");
-            usuario.setCpf(scanner.nextLine());
+            usuario.setCpf(scanner.nextLong());
+            scanner.nextLine();
+            }catch(Exception e){
+                System.out.println("CPF inválido. Digite apenas numeros.");
+                scanner.nextLine();
+                continue;
+            }
 
             System.out.print("Email: ");
             usuario.setEmail(scanner.nextLine());
+            String procurarPor = "@";
+            if (usuario.getEmail().toLowerCase().contains(procurarPor.toLowerCase()) == false) {
+                System.out.println("Email inválido. Digite um email válido.");
+                continue;
+            }
 
-            System.out.print("Matricula: ");
-            usuario.setMatricula(scanner.nextLine());
+            try{System.out.print("Matricula: ");
+            usuario.setMatricula(scanner.nextLong());
+            scanner.nextLine();
+            }catch(Exception e){
+                System.out.println("Matricula inválida. Digite apenas numeros.");
+                scanner.nextLine();
+                continue;
+            }
+            
 
             System.out.println("Tipo");
             System.out.println("1 - Aluno");
@@ -93,19 +113,23 @@ public class Usuario {
                 usuario.setTipo(true);
             } else if (opcaoTipo == 2) {
                 usuario.setTipo(false);
+            }else{
+                System.out.println("Opcao inválida.");
+                continue;
             }
 
             ListaUsuarios.add(usuario);
 
-            System.out.print("Deseja adicionar outro contato? (s/n): ");
+            System.out.print("Deseja adicionar outro usuario? (s/n): ");
             opcao = scanner.nextLine();
             System.out.println("==================================");
             if (!opcao.equalsIgnoreCase("s")) {
                 break;
             }
         }
-        for (Usuario usuario : ListaUsuarios) {
-            System.out.println(usuario);
+        for (int i = 0; i < ListaUsuarios.size(); i++) {
+            Usuario ul = ListaUsuarios.get(i);
+            System.out.println(i + " - " + ul.getNome());
         }
     }
 }

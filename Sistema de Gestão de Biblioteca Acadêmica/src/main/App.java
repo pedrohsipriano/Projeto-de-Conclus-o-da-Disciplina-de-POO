@@ -17,24 +17,24 @@ public class App {
         List<Usuario> ListaUsuarios = new LinkedList<>();
         List<UsuarioLivro> ListaUsuarioLivro = new LinkedList<>();
 
-        for (int i = 1; i <= 5; i++) {
-            Usuario u = new Usuario();
-            u.setNome("Usuario " + i);
-            u.setCpf("000.000.000-0" + i);
-            u.setEmail("usuario" + i + "@teste.com");
-            u.setMatricula("202500" + i);
-            u.setTipo(i % 2 == 0); 
-            ListaUsuarios.add(u);
+        // for (int i = 1; i <= 5; i++) {
+        //     Usuario u = new Usuario();
+        //     u.setNome("Usuario " + i);
+        //     u.setCpf("000.000.000-0" + i);
+        //     u.setEmail("usuario" + i + "@teste.com");
+        //     u.setMatricula("202500" + i);
+        //     u.setTipo(i % 2 == 0); 
+        //     ListaUsuarios.add(u);
 
-            Livro l = new Livro();
-            l.setTitulo("Livro Teste " + i);
-            l.setAutor("Autor " + i);
-            l.setAnoDePublicacao("202" + i);
-            l.setEditora("Editora " + i);
-            l.setIsbn(10000 + i);
-            l.setEmprestimo(true);
-            ListaLivros.add(l);
-        }
+        //     Livro l = new Livro();
+        //     l.setTitulo("Livro Teste " + i);
+        //     l.setAutor("Autor " + i);
+        //     l.setAnoDePublicacao("202" + i);
+        //     l.setEditora("Editora " + i);
+        //     l.setIsbn(10000 + i);
+        //     l.setEmprestimo(true);
+        //     ListaLivros.add(l);
+        // }
 
 
         int opcao = 0;
@@ -51,7 +51,7 @@ public class App {
             System.out.println("3 - Emprestar Livro");
             System.out.println("4 - Devolver Livro");
             System.out.println("5 - Listar Livros");
-            System.out.println("6 - Devolver Livro");
+            System.out.println("6 - Consultar Disponibilidade do Livro");
             System.out.println("7 - Sair");
             System.out.println("==================================");
             System.out.print("Opcao: ");
@@ -80,16 +80,19 @@ public class App {
                 case 4:
                     System.out.println("==================================");
                     System.out.println("4 - Devolver Livro");
+                    UsuarioLivro.devolverLivro(ListaUsuarios, ListaLivros, ListaUsuarioLivro);
                     System.out.println("==================================\n");
                     break;
                 case 5:
                     System.out.println("==================================");
                     System.out.println("5 - Listar Livros");
+                    Livro.listarLivros(ListaLivros);
                     System.out.println("==================================\n");
                     break;
                 case 6:
                     System.out.println("==================================");
                     System.out.println("6 - Consultar Disponibilidade do Livro");
+                    Livro.buscarLivro(ListaLivros);
                     System.out.println("==================================\n");
                     break;
                 case 7:
@@ -103,11 +106,7 @@ public class App {
                     System.out.println("Escolha uma opção valida!");
                     System.out.println("==================================\n");
                     break;
-            }
-            if (opcao == 7) {
-                break;
-            }
-            
+            }            
         }
         scanner.close();
 
