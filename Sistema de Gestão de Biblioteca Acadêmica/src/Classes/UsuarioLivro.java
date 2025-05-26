@@ -43,7 +43,6 @@ public class UsuarioLivro {
 
         int idxUsuario = -1;
         while (true) {
-            System.out.println("==================================");
             System.out.println("Usuários disponíveis:");
             for (int i = 0; i < listaUsuarios.size(); i++) {
                 System.out.println(i + " - " + listaUsuarios.get(i).getNome());
@@ -56,12 +55,10 @@ public class UsuarioLivro {
             } else {
                 System.out.println("Número de usuário inválido. Tente novamente.");
             }
-            System.out.println("==================================\n");
         }
 
         int idxLivro = -1;
         while (true) {
-            System.out.println("==================================");
             System.out.println("Livros disponíveis:");
             for (int i = 0; i < listaLivros.size(); i++) {
                 Livro livro = listaLivros.get(i);
@@ -69,7 +66,7 @@ public class UsuarioLivro {
                 System.out.println(i + " - " + livro.getTitulo() + " [" + status + "]");
             }
 
-            System.out.print("Escolha o número do livro: ");
+            System.out.print("Escolha o número do livro: \n");
             idxLivro = scanner.nextInt();
 
             if (idxLivro >= 0 && idxLivro < listaLivros.size()) {
@@ -77,16 +74,11 @@ public class UsuarioLivro {
                 if (livroSelecionado.isEmprestimo()) {
                     break;
                 } else {
-                    System.out.println("==================================");
-                    System.out.println("Livro já está emprestado. Escolha outro livro.");
-                    System.out.println("==================================\n");
+                    System.out.println("Livro já está emprestado. Escolha outro livro.\n");
                 }
             } else {
-                System.out.println("==================================");
-                System.out.println("Número de livro inválido. Tente novamente.");
-                System.out.println("==================================\n");
+                System.out.println("Número de livro inválido. Tente novamente.\n");
             }
-            System.out.println("==================================");
         }
 
         Usuario usuarioSelecionado = listaUsuarios.get(idxUsuario);
@@ -96,15 +88,12 @@ public class UsuarioLivro {
         UsuarioLivro novoEmprestimo = new UsuarioLivro(usuarioSelecionado, livroSelecionado);
         listaUsuarioLivro.add(novoEmprestimo);
 
-        System.out.println("==================================");
-        System.out.println("Livro emprestado com sucesso!");
-        System.out.println("==================================\n");
+        System.out.println("Livro emprestado com sucesso!\n");
 
         for (int i = 0; i < listaUsuarioLivro.size(); i++) {
                 UsuarioLivro ul = listaUsuarioLivro.get(i);
                 System.out.println(i + " - " + ul.getUsuario().getNome() + " | " + ul.getLivro().getTitulo());
             }
-        System.out.println("==================================");
     }
 
     public static void devolverLivro(List<Usuario> listaUsuarios, List<Livro> listaLivros,
@@ -113,14 +102,13 @@ public class UsuarioLivro {
         Scanner scanner = new Scanner(System.in);
 
         if (listaUsuarioLivro.isEmpty()) {
-            System.out.println("Não há livros emprestados para devolver.");
+            System.out.println("Não há livros emprestados para devolver.\n");
             return;
         }
 
         int idxEmprestimo = -1;
         while (true) {
-            System.out.println("==================================");
-            System.out.println("Livros emprestados:");
+            System.out.println("Livros emprestados:\n");
             for (int i = 0; i < listaUsuarioLivro.size(); i++) {
                 UsuarioLivro ul = listaUsuarioLivro.get(i);
                 System.out.println(i + " - " + ul.getUsuario().getNome() + " | " + ul.getLivro().getTitulo());
@@ -132,16 +120,14 @@ public class UsuarioLivro {
             if (idxEmprestimo >= 0 && idxEmprestimo < listaUsuarioLivro.size()) {
                 break;
             } else {
-                System.out.println("Número inválido. Tente novamente.");
+                System.out.println("Número inválido. Tente novamente.\n");
             }
         }
 
         UsuarioLivro devolucao = listaUsuarioLivro.remove(idxEmprestimo);
         devolucao.getLivro().setEmprestimo(true);
 
-        System.out.println("==================================");
-        System.out.println("Livro devolvido com sucesso!");
-        System.out.println("==================================\n");
+        System.out.println("Livro devolvido com sucesso!\n");
     }
 
 }

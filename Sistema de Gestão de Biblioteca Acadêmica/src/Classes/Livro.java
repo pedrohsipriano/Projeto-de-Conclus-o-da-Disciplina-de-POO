@@ -80,7 +80,6 @@ public class Livro {
         String opcao = "s";
         while (!opcao.equalsIgnoreCase("n")) {
             Livro livro = new Livro();
-            System.out.println("==================================");
             System.out.print("Titulo: ");
             livro.setTitulo(scanner.nextLine());
 
@@ -128,7 +127,6 @@ public class Livro {
 
             System.out.print("Deseja adicionar outro livro? (s/n): ");
             opcao = scanner.nextLine();
-            System.out.println("==================================");
             if (!opcao.equalsIgnoreCase("s")) {
                 break;
             }
@@ -142,7 +140,6 @@ public class Livro {
     public static void listarLivros(List<Livro> ListaLivros) {
         System.out.print("\033[H\033[J");
         if (ListaLivros.isEmpty()) {
-            System.out.println("==================================");
             System.out.println("Nenhum livro cadastrado.");
             return;
         }
@@ -156,7 +153,6 @@ public class Livro {
         String termoBusca;
 
         if (listaLivros.isEmpty()) {
-            System.out.println("==================================");
             System.out.println("Nenhum livro cadastrado.");
             return;
         }
@@ -164,7 +160,6 @@ public class Livro {
         termoBusca = scanner.nextLine().toLowerCase();
 
         boolean livroEncontrado = false;
-        System.out.println("==================================");
         System.out.println("Livros encontrados:");
 
         for (Livro livro : listaLivros) {
@@ -177,7 +172,5 @@ public class Livro {
         if (!livroEncontrado) {
             System.out.println("Nenhum livro encontrado com esse termo.");
         }
-
-        System.out.println("==================================");
     }
 }

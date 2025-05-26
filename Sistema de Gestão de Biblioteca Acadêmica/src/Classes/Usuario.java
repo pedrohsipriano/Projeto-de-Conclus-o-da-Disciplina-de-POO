@@ -70,7 +70,6 @@ public class Usuario {
         while (!opcao.equalsIgnoreCase("n")) {
 
             Usuario usuario = new Usuario();
-            System.out.println("==================================");
             System.out.print("Nome: ");
             usuario.setNome(scanner.nextLine());
 
@@ -122,7 +121,6 @@ public class Usuario {
 
             System.out.print("Deseja adicionar outro usuario? (s/n): ");
             opcao = scanner.nextLine();
-            System.out.println("==================================");
             if (!opcao.equalsIgnoreCase("s")) {
                 break;
             }
