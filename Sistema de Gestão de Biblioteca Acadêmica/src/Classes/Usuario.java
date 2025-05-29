@@ -1,14 +1,20 @@
+// Declaração do pacote onde a classe está localizada
 package Classes;
+
+// Importações necessárias para utilizar listas e entrada de dados
 import java.util.List;
 import java.util.Scanner;
 
+// Definição da classe Usuario
 public class Usuario {
+    // Atributos privados da classe
     private String nome;
     private long matricula;
-    private boolean tipo;
+    private boolean tipo; // true = aluno, false = professor
     private String email;
     private long cpf;
 
+    // Métodos getter e setter para cada atributo
     public String getNome() {
         return nome;
     }
@@ -49,6 +55,7 @@ public class Usuario {
         this.cpf = cpf;
     }
 
+    // Método toString que formata a saída dos dados do usuário
     @Override
     public String toString() {
         return String.format(
@@ -62,69 +69,81 @@ public class Usuario {
                 nome, matricula, email, cpf, tipo ? "Aluno" : "Professor");
     }
 
+    // Método estático para adicionar usuários a uma lista
     public static void adicionarUsuario(List<Usuario> ListaUsuarios) {
+        // Limpa a tela (funciona em alguns terminais)
         System.out.print("\033[H\033[J");
         Scanner scanner = new Scanner(System.in);
 
-        String opcao = "s";
+        String opcao = "s"; // Controle de repetição
         while (!opcao.equalsIgnoreCase("n")) {
+            Usuario usuario = new Usuario(); // Cria novo usuário
 
-            Usuario usuario = new Usuario();
+            // Solicita nome
             System.out.print("Nome: ");
             usuario.setNome(scanner.nextLine());
 
-            try{
-            System.out.print("CPF: ");
-            usuario.setCpf(scanner.nextLong());
-            scanner.nextLine();
-            }catch(Exception e){
-                System.out.println("CPF inválido. Digite apenas numeros.");
-                scanner.nextLine();
-                continue;
+            // Solicita CPF com tratamento de exceção
+            try {
+                System.out.print("CPF: ");
+                usuario.setCpf(scanner.nextLong());
+                scanner.nextLine(); // Limpa o buffer
+            } catch (Exception e) {
+                System.out.println("CPF inválido. Digite apenas números.");
+                scanner.nextLine(); // Limpa entrada inválida
+                continue; // Volta ao início do loop
             }
 
+            // Solicita email e faz validação simples
             System.out.print("Email: ");
             usuario.setEmail(scanner.nextLine());
             String procurarPor = "@";
             if (usuario.getEmail().toLowerCase().contains(procurarPor.toLowerCase()) == false) {
-                System.out.println("Email inválido. Digite um email válido.");
+                System.out.println("Email inválido. Digite um email válido.");
                 continue;
             }
 
-            try{System.out.print("Matricula: ");
-            usuario.setMatricula(scanner.nextLong());
-            scanner.nextLine();
-            }catch(Exception e){
-                System.out.println("Matricula inválida. Digite apenas numeros.");
-                scanner.nextLine();
+            // Solicita matrícula com tratamento de exceção
+            try {
+                System.out.print("Matricula: ");
+                usuario.setMatricula(scanner.nextLong());
+                scanner.nextLine(); // Limpa o buffer
+            } catch (Exception e) {
+                System.out.println("Matrícula inválida. Digite apenas números.");
+                scanner.nextLine(); // Limpa entrada inválida
                 continue;
             }
-            
 
+            // Solicita tipo de usuário: aluno ou professor
             System.out.println("Tipo");
             System.out.println("1 - Aluno");
             System.out.println("2 - Professor");
             System.out.print("Opcao: ");
-
             int opcaoTipo = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // Limpa o buffer
+
+            // Define tipo com base na escolha
             if (opcaoTipo == 1) {
-                usuario.setTipo(true);
+                usuario.setTipo(true); // Aluno
             } else if (opcaoTipo == 2) {
-                usuario.setTipo(false);
-            }else{
-                System.out.println("Opcao inválida.");
+                usuario.setTipo(false); // Professor
+            } else {
+                System.out.println("Opção inválida.");
                 continue;
             }
 
+            // Adiciona o usuário à lista
             ListaUsuarios.add(usuario);
 
-            System.out.print("Deseja adicionar outro usuario? (s/n): ");
+            // Pergunta se deseja continuar cadastrando
+            System.out.print("Deseja adicionar outro usuário? (s/n): ");
             opcao = scanner.nextLine();
             if (!opcao.equalsIgnoreCase("s")) {
-                break;
+                break; // Sai do loop se a resposta for "n"
             }
         }
+
+        // Mostra os usuários cadastrados
         for (int i = 0; i < ListaUsuarios.size(); i++) {
             Usuario ul = ListaUsuarios.get(i);
             System.out.println(i + " - " + ul.getNome());
