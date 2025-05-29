@@ -1,18 +1,45 @@
-## Getting Started
+## Primeiros Passos
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Bem-vindo ao mundo Java no Visual Studio Code! Este guia ajudará você a começar a escrever código Java utilizando o VS Code.
 
-## Folder Structure
+## Estrutura de Pastas
 
-The workspace contains two folders by default, where:
+O workspace contém duas pastas por padrão, onde:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+* `src`: pasta onde ficam os arquivos-fonte do projeto (código Java).
+* `lib`: pasta onde devem ser colocadas as dependências externas (bibliotecas JAR).
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Os arquivos compilados (bytecode `.class`) serão gerados automaticamente na pasta `bin`.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+> Se você quiser personalizar a estrutura de pastas, abra o arquivo `.vscode/settings.json` e altere as configurações correspondentes.
 
-## Dependency Management
+## Gerenciamento de Dependências
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+A visualização `JAVA PROJECTS` no lado esquerdo do VS Code permite gerenciar facilmente suas dependências. Mais informações podem ser encontradas [neste link](https://github.com/microsoft/vscode-java-dependency#manage-dependencies) (em inglês).
+
+## Executando o Projeto
+
+Para compilar e executar o projeto, siga estas instruções:
+
+1. Certifique-se de que o Java JDK está instalado (versão 11 ou superior recomendada).
+2. Abra o projeto no VS Code.
+3. Use a opção de execução (`Run`) diretamente no VS Code ou abra um terminal integrado e execute os seguintes comandos:
+
+```bash
+javac -d bin src/main/App.java
+java -cp bin main.App
+```
+
+> Substitua `App.java` pelo nome da sua classe principal, se for diferente.
+
+### Observação sobre limpeza do terminal
+
+O código a seguir é utilizado para limpar o terminal no início do programa:
+
+```java
+System.out.print("\033[H\033[J");
+```
+
+> **Atenção:** Essa linha usa códigos ANSI para limpar o terminal e pode **não funcionar** corretamente em todos os sistemas ou terminais, como no terminal padrão do Windows. Se estiver vendo caracteres estranhos ou o terminal não estiver limpando como esperado, você pode comentar ou remover essa linha sem prejuízo ao funcionamento do programa.
+
+---
