@@ -83,12 +83,6 @@ O sistema simula o funcionamento de uma biblioteca universitária e deverá perm
 
 ---
 
-## ⏰ Prazo de Entrega
-
-**Data limite:** 03/06 (última aula antes da prova A1)
-
----
-
 ## 👥 Informações Adicionais
 
 - Projeto pode ser desenvolvido **individualmente ou em duplas**.
